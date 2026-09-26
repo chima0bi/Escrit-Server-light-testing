@@ -15,11 +15,11 @@ export function signRefreshToken(userId) {
 }
 
 export function setRefreshCookie(res, token) {
-  res.cookie('refreshToken', token, {
+  res.cookie("refreshToken", token, {
     httpOnly: true,
-    secure: env.nodeEnv === 'production',
-    sameSite: 'lax',
-    path: '/api/auth',
+    secure: env.nodeEnv === "production",
+    sameSite: env.nodeEnv === "production" ? "none" : "lax",
+    path: "/api/auth",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 }
